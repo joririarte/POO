@@ -1,11 +1,11 @@
-# Ejercicio D
+# Ejercicio D (Galeria de Fotos)
 
 - Diseñar una aplicación para una galería de fotos
 - En un archivo .txt almacenar en cada línea, una URL a una imagen
 - Un botón >> y otro botón << para avanzar o retroceder en la galería de fotos
 
 
- # Ejercicio E
+ # Ejercicio E (Bola 8)
 
 - Definir la clase Ventana que herede de QWidget
 - Usar desde el disco una imagen de una bola 8 con formato PNG (para usar transparencias).
