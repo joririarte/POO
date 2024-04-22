@@ -30,18 +30,18 @@ Ventana::Ventana()
 
     vblMainVerticalLayout->addLayout(hblHorizontalLayout);
 
-    pixBallPixmap = new QPixmap("C:/Users/jiriartechamorro/OneDrive - UNIVERSIDAD BLAS PASCAL/Documentos/3 -TERCERO/POO/Bola8/bola8.png");
+    pixBallPixmap = new QPixmap("bola8.png");
     gsScene = new QGraphicsScene;
 
-    gsScene->setSceneRect(0,0,400,300);
+    gsScene->setSceneRect(0,0,800,600);
 
     gvView = new QGraphicsView(gsScene);
-    gvView->setRenderHint(QPainter::Antialiasing);
+    gvView->setRenderHint(QPainter::SmoothPixmapTransform);
 
     bbBall = new BouncingBall(gsScene,*pixBallPixmap);
     gsScene->addItem(bbBall);
 
-    bbBall->setDiameter(40);
+    bbBall->setDiameter(150);
     bbBall->setVelocity(4);
 
     tTimer = new QTimer;

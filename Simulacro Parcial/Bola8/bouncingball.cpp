@@ -2,7 +2,8 @@
 #include <QGraphicsScene>
 
 BouncingBall::BouncingBall(QGraphicsScene* scene, const QPixmap &pixmap)
-    : diameter(20), velocity(-2), dx(velocity) {
+    : diameter(512), velocity(-2), dx(velocity) {
+    QImage image;
     // Escalar el QPixmap antes de pasarlo al constructor base
     QPixmap scaledPixmap = pixmap.scaled(diameter, diameter);
     setPixmap(scaledPixmap);
