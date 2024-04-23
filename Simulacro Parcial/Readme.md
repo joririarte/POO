@@ -1,4 +1,4 @@
-# Ejercicio A
+# Login DNI con Imagen (Ejercicio A)
 - Comenzar un proyecto vacío con QtCreator y diseñar un login de usuarios como el siguiente:
 
 
