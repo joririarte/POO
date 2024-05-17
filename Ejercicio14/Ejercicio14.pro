@@ -21,6 +21,7 @@ SOURCES += \
     imagefetcher.cpp \
     main.cpp \
     login.cpp \
+    registrousuario.cpp \
     weatherfetcher.cpp
 
 HEADERS += \
@@ -28,11 +29,13 @@ HEADERS += \
     formulario.h \
     imagefetcher.h \
     login.h \
+    registrousuario.h \
     weatherfetcher.h
 
 FORMS += \
     formulario.ui \
-    login.ui
+    login.ui \
+    registrousuario.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

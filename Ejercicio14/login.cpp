@@ -4,6 +4,7 @@
 #include "weatherfetcher.h"
 #include "imagefetcher.h"
 #include "admindb.h"
+#include "registrousuario.h"
 #include <QPainter>
 #include <QImage>
 #include <QHash>
@@ -28,7 +29,7 @@ Login::Login(QWidget *parent) : QWidget(parent), ui(new Ui::Login)
     temporizador->start(1000);
 
     database = new AdminDB(this);
-    qDebug()<<"Database status: "<<database->conectar("../Ejercicio14-NUEVO/db.sqlite");
+    qDebug()<<"Database status: "<<database->conectar("../Ejercicio14/db.sqlite");
 
     //Conexiones
     connect(this->ui->pbValidar, SIGNAL(pressed()),this,SLOT(slot_validarUsuario()));
@@ -36,6 +37,7 @@ Login::Login(QWidget *parent) : QWidget(parent), ui(new Ui::Login)
     connect(this->clima,SIGNAL(signal_temperaturaLista(QString)),this,SLOT(slot_publicarClima(QString)));
     connect(this->bkgImageFetcher,SIGNAL(signal_imagenLista(QImage)),this,SLOT(slot_publicarImagen(QImage)));
     connect(this->temporizador,SIGNAL(timeout()),this,SLOT(slot_actualizarTiempo()));
+    connect(this->ui->pbRegistrarse,SIGNAL(pressed()),this,SLOT(slot_registrarse()));
 }
 
 Login::~Login()
@@ -61,12 +63,13 @@ void Login::paintEvent(QPaintEvent *event)
 
 void Login::slot_validarUsuario(){
     QString usuario = this->ui->leUsuario->text();
-    if(!estaBloqueado(usuario) && database->validarUsuario(usuario,this->ui->leClave->text())){
+    if(!estaBloqueado(usuario) && !database->validarUsuario(usuario,this->ui->leClave->text()).empty()){
         //Algo
         intentosPorUsuario.insert(usuario,0);
         formulario = new Formulario();
         formulario->show();
         this->hide();
+        emit signal_usuarioValidado(usuario);
     }
     else if(!estaBloqueado(usuario)){
         intentosPorUsuario.insert(usuario, intentosPorUsuario.value(usuario) + 1);
@@ -103,6 +106,14 @@ void Login::slot_actualizarTiempo()
         tiempoRestantePorUsuario.insert(clave, tiempoRestantePorUsuario.value(clave).addSecs(-1));
         qDebug()<<"Actualizando Tiempo de " << clave << tiempoRestantePorUsuario.value(clave).toString("m:ss");
     }
+}
+
+void Login::slot_registrarse()
+{
+    registro = new RegistroUsuario();
+    registro->setCaller(this);
+    registro->show();
+    this->hide();
 }
 
 
