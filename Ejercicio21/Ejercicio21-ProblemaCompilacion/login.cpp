@@ -20,8 +20,9 @@ void Login::slot_validarUsuario()
     if( this->ui->leUsuario->text() == "admin" &&
         this->ui->leClave->text()   == "1234" ){
         this->ventana = new Ventana();
+        this->ventana->setCaller(this);
         this->ventana->show();
-        this->ventana->hide();
+        this->hide();
     }
 }
 
