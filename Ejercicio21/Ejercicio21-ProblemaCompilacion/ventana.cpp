@@ -4,6 +4,7 @@
 Ventana::Ventana(QWidget *parent) : QWidget(parent), ui(new Ui::Ventana)
 {
     this->ui->setupUi(this);
+    connect(this->ui->pbVolver,SIGNAL(pressed()),this,SLOT(slot_volver()));
 }
 
 Ventana::~Ventana()
@@ -18,6 +19,6 @@ void Ventana::setCaller(Login *callerWidget)
 
 void Ventana::slot_volver()
 {
-    this->hide();
+    this->close();
     login->show();
 }
