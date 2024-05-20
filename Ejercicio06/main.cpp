@@ -1,9 +1,7 @@
 /*
- * Ejercicio 6 y Ejercicio 7
+ * Ejercicio 6
  * Se creo clase Character con sus atributos y métodos
  * Se crea un vector de la clase
- * Se utiliza la funcion sort + una funcion para indicar el orden en el vector
- * En este caso la funcion ordena por ataque ascendente, pero dicho criterio puede ser cualquier cosa
 */
 #include <iostream>
 #include <vector>
@@ -34,11 +32,6 @@ void PrintCharacter(Character* character){
     std::cout << "\n\n########################################\n\n";
 }
 
-bool OrderByAttackASC(const Character *A, const Character *B)
-{
-    return A->GetAttack() < B->GetAttack();
-}
-
 
 int main(){
 
@@ -49,13 +42,6 @@ int main(){
     LoadCharacters(personajes);
 
     std::cout << "Los Personajes son:\n\n";
-    for(const auto& character : *personajes){
-        PrintCharacter(character);
-    }
-
-    std::cout << "\n\nLos Personajes ordenados por ataque son:\n\n";
-    std::sort(personajes->begin(), personajes->end(), OrderByAttackASC);
-
     for(const auto& character : *personajes){
         PrintCharacter(character);
     }
