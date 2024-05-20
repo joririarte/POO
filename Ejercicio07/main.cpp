@@ -1,5 +1,5 @@
 /*
- * Ejercicio 6 y Ejercicio 7
+ * Ejercicio 7
  * Se creo clase Character con sus atributos y métodos
  * Se crea un vector de la clase
  * Se utiliza la funcion sort + una funcion para indicar el orden en el vector
