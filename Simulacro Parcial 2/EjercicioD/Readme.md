@@ -1,6 +1,6 @@
 # Ejercicio D
 
-##Enunciado
+## Enunciado
 * Crear una clase Lienzo que herede de QWidget, creado con QtDesigner y que permita dibujar con paintEvent.
 * Cuando se presiona la tecla A (Activar) se comenzará a dibujar cada posición en donde se encuentra el mouse. No depende de que se presione algún bóton del mouse para comenzar a dibujar.
 * Cuando se presiona la tecla D (Desactivar) se dejará de dibujar.
