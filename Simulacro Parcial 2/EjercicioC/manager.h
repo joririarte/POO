@@ -3,9 +3,7 @@
 
 #include <QObject>
 
-class Login;
 class Ventana;
-class AdminDB;
 
 class Manager : public QObject
 {
@@ -14,8 +12,9 @@ public:
     explicit Manager(QObject *parent = nullptr);
     void iniciar();
 private:
-    Login* login;
     Ventana* ventana;
+private slots:
+    void slot_validarUsuario(QString,QString);
 };
 
 #endif // MANAGER_H

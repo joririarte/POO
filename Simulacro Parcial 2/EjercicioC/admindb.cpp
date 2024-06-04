@@ -6,9 +6,17 @@
 #include <QCryptographicHash>
 #include <QDebug>
 
+AdminDB* AdminDB::instance = nullptr;
+
 AdminDB::AdminDB(QObject* parent) : QObject(parent)
 {
     db = QSqlDatabase::addDatabase( "QSQLITE" );
+}
+
+AdminDB *AdminDB::getInstance()
+{
+   instance = instance ? instance : new AdminDB;
+   return instance;
 }
 
 bool AdminDB::conectar(QString archivoSqlite)
@@ -52,53 +60,6 @@ QStringList AdminDB::validarUsuario(QString usuario, QString clave)
     return datosPersonales;
 }
 
-//bool AdminDB::validarUsuario(QString usuario, QString clave)
-//{
-//    if ( db.open() )  {
-//        QSqlQuery query = db.exec( "SELECT nombre, apellido FROM usuarios WHERE usuario='"+usuario+"' AND clave='"+clave+"'" );
-
-//        if(query.size() <= 0){
-//            qDebug() << "No hay datos";
-//            qDebug() << query.lastError().text();
-//        }
-
-//        while( query.next() )  {
-//            qDebug() << query.value( 0 ).toString() << " " << query.value( 1 ).toString();
-//            return true;
-//        }
-//    }
-
-//    return false;
-//}
-
-bool AdminDB::insertarUsuario(QString usuario, QString clave, QString nombre, QString apellido, QString mail)
-{
-    if (!db.open()) {
-        qDebug() << "Error al abrir la base de datos:" << db.lastError().text();
-        return false;
-    }
-    QString claveMd5 = QCryptographicHash::hash( clave.toUtf8(),
-                                                 QCryptographicHash::Md5 ).toHex();
-
-    // Prepara la consulta INSERT
-    QSqlQuery query;
-    query.prepare("INSERT INTO usuarios VALUES (null, :usuario, :clave, :nombre, :apellido, :mail)");
-    query.bindValue(":usuario", usuario);
-    query.bindValue(":clave", claveMd5);
-    query.bindValue(":nombre", nombre);
-    query.bindValue(":apellido", apellido);
-    query.bindValue(":mail", mail);
-
-    if (!query.exec()) {
-        qDebug() << "Error al ejecutar la consulta:" << query.lastError().text();
-        db.close();
-        return false;
-    }
-
-    db.close();
-    return true;
-}
-
 QVector<QStringList> AdminDB::select(QString comando)
 {
     QVector<QStringList> resultados;
@@ -130,3 +91,5 @@ QVector<QStringList> AdminDB::select(QString comando)
     return resultados;
 
 }
+
+

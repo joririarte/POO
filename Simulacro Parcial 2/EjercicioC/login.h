@@ -12,14 +12,18 @@ class Login : public QWidget
     Q_OBJECT
 
 public:
-    Login(QWidget *parent = nullptr);
     ~Login();
+    static Login *getInstance();
 
 private:
     Ui::Login *ui;
+    static Login* instance;
+    Login(QWidget *parent = nullptr);
+
 private slots:
-    void slot_validarUsuario();
+    void slot_solicitarValidacion();
 signals:
     void signal_ingresar();
+    void signal_solicitarValidacion(QString, QString);
 };
 #endif // LOGIN_H

@@ -3,19 +3,24 @@
 #include <QSqlDatabase>
 #include <QString>
 #include <QObject>
+#include <QVector>
+#include <QPair>
 
 class AdminDB : public QObject {
     Q_OBJECT
 public:
-    AdminDB(QObject* parent = nullptr);
+    static AdminDB* getInstance();
+
     bool conectar(QString archivoSqlite);
     QSqlDatabase getDB();
-    //bool validarUsuario(QString usuario, QString clave);
     QStringList validarUsuario(QString usuario, QString clave);
-    bool insertarUsuario(QString usuario, QString clave, QString nombre, QString apellido, QString mail);
     QVector<QStringList> select(QString comando);
+
 private:
     QSqlDatabase db;
+    static AdminDB* instance;
+    AdminDB(QObject* parent = nullptr);
+
 };
 
 #endif // ADMINDB_H
