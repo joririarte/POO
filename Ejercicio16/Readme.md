@@ -7,3 +7,7 @@
 ## Segundo Enunciado
 * Que el endpoint para validar a los usuarios sea con un POST y que devuelva "denegado" o que devuelva el nombre y el apellido del usuario en el siguiente formato: "Juan Carlos::Ponce"
 * Probar el funcionamiento de este endpoint mediante la web de prueba de FastAPI.
+
+## Resolución
+* En el archivo main.py se encuentra el código python con el que se creó la API con fast API.
+* Dentro de la carpeta Ejercicio16 está el proyecto QT que implementa la API, y valida usuarios que estén registrados.
