@@ -5,3 +5,6 @@
 * Crear una nueva clase (que no sea Persona, ni Cliente, ni Poste). Invente una clase.
 * Agregar uno o más constructores, agregar sus métodos y sus atributos
 * Crear algunos objetos de esta clase en la función main
+
+## Resolución
+* Se creó la clase Character que simula un personaje de fantasía con sus atributos y métodos
