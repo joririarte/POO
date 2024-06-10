@@ -7,3 +7,6 @@
 * Probar esta función en main utilizando dos objetos de la clase Persona y dos objetos de la clase Poste.
 * Incluir todo el código fuente en el archivo main.cpp.
 * Pedirle al chat el código, interpretarlo y hacerlo funcionar.
+
+## Resolución
+* Se creó una función que recibe un parámetro Template
