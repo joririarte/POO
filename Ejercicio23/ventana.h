@@ -19,5 +19,9 @@ private:
     Ui::Ventana *ui;
     void setLabelText(QString);
     friend class Manager;
+    void crearPersonajes();
+    QVector<class Character*> personajes;
+private slots:
+    void slot_publicarPersonajes();
 };
 #endif // VENTANA_H

@@ -17,18 +17,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     admindb.cpp \
+    arquero.cpp \
+    character.cpp \
     imagefetcher.cpp \
     login.cpp \
+    mago.cpp \
     main.cpp \
     manager.cpp \
+    principe.cpp \
+    soldado.cpp \
     ventana.cpp \
     weatherfetcher.cpp
 
 HEADERS += \
     admindb.h \
+    arquero.h \
+    character.h \
     imagefetcher.h \
     login.h \
+    mago.h \
     manager.h \
+    principe.h \
+    soldado.h \
     ventana.h \
     weatherfetcher.h
 

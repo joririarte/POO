@@ -18,6 +18,7 @@ void ImageFetcher::getImage(QString url)
     if(url != ""){
         QNetworkReply* reply = manager->get(QNetworkRequest(QUrl(url)));
         connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(slot_downloadProgress(qint64,qint64)));
+        qDebug()<<"image request sent";
     }
 }
 
@@ -27,12 +28,14 @@ void ImageFetcher::getImageFromApi(QString url)
     if(url != ""){
         QNetworkReply* reply = apiManager->get(QNetworkRequest(QUrl(url)));
         connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(slot_downloadProgress(qint64,qint64)));
+        qDebug()<<"api request sent";
     }
 }
 
 void ImageFetcher::slot_imagenLista(QNetworkReply *reply)
 {
     image = QImage::fromData(reply->readAll());
+    qDebug()<<"emiting signal image ready";
     emit signal_imagenLista(image);
 }
 
